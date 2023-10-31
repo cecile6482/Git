@@ -109,3 +109,50 @@ Attention, un tag ne peut pas contenir d'espace.
     - créer un tag annoté sur un commit précis
 
 Pour supprimer un tag, il faut utiliser la commande git tag -d suivi du nom du tag. Par exemple, git tag -d v1.0.0.
+
+## créer une branche
+
+Créer des branches dans git est un concept très important. Cela permet de travailler sur plusieurs fonctionnalités, de travailler à plusieurs sur un même projet ou de tester des fonctionnalités sans impacter le code principal.
+
+- créer une nouvelle branche
+Pour créer une branche, il faut utiliser la commande git branch suivi du nom de la branche. Par exemple, git branch feature-1. Cela va créer une branche feature-1.
+
+- se déplacer sur une branche
+Pour se déplacer sur une branche, il faut utiliser la commande git checkout suivi du nom de la branche. Par exemple, git checkout feature-1. Cela va nous déplacer sur la branche feature-1.
+Ou depuis git 2.23, on peut utiliser la commande git checkout -b suivi du nom de la branche. Par exemple, git checkout -b feature-1. Cela va créer la branche feature-1 et nous déplacer dessus.
+Depuis git 2.23, on peut utiliser la commande git switch suivi du nom de la branche. Par exemple, git switch feature-1. Cela va nous déplacer sur la branche feature-1.
+Git switch est plus intuitif que git checkout car il permet de se déplacer sur une branche ou de créer une branche en une seule commande.
+        exemple : git switch -c feature-1
+
+- renommer une branche
+Pour renommer une branche, il faut utiliser la commande git branch -m suivi du nouveau nom de la branche. Par exemple, git branch -m feature-1 feature-2. Cela va renommer la branche feature-1 en feature-2.
+
+- supprimer une branche
+Pour supprimer une branche, il faut utiliser la commande git branch -d suivi du nom de la branche. Par exemple, git branch -d feature-1. Cela va supprimer la branche feature-1.
+Attention: si ma branche n'a pas été fusionnée, git va m'afficher un message d'erreur. Pour forcer la suppression de la branche, il faut utiliser la commande git branch -D suivi du nom de la branche. Par exemple, git branch -D feature-1.
+
+Si je n'ecris que git branch, cela va afficher la liste des branches. La branche sur laquelle je suis est indiquée par une étoile.
+
+Enfin, la commande git diff permet de comparer les modifications apportées par une branche. Par exemple, git diff feature-1.
+
+## Le fichier .gitignore
+
+Ce fichier permet d'ignorer des fichiers ou des dossiers. Pour cela, il suffit de créer un fichier .gitignore à la racine du projet et d'ajouter les fichiers ou dossiers à ignorer. Par exemple, node_modules/.
+Il posséde une syntaxe particulière. Pour en savoir plus, consulter la documentation officielle : https://git-scm.com/docs/gitignore
+
+Pour ignorer un fichier ou un dossier déjà suivi par git, il faut simplement ajouter le chemin relatif du fichier ou du dossier dans le fichier .gitignore.
+
+On peut commenter un fichier .gitignore en ajoutant un # au début de la ligne.
+
+Utiliser des patterns dans le fichier .gitignore: 
+    - * : permet d'ignorer tous les fichiers et dossiers.
+    - ! : permet d'ignorer tous les fichiers et dossiers sauf ceux qui correspondent au pattern.
+    - / : permet d'ignorer un dossier.
+    - ** : permet d'ignorer tous les fichiers et dossiers dans un dossier.
+    - ? : permet d'ignorer un caractère.
+    - [] : permet d'ignorer un ensemble de caractères.
+    - {} : permet d'ignorer un ensemble de caractères séparés par une virgule.
+
+Une fois le fichier configuré, il faut l'ajouter au staging area et créer un commit. Par exemple, git add .gitignore puis git commit -m "add .gitignore".
+
+
